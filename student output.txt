@@ -1,0 +1,8 @@
+masukkan nama:Nur Izzatty
+masukkan jantina:Perempuan
+masukkan nama subjek:OOP
+masukkan umur:18
+masukkan markah 1: 90
+masukkan markah 2: 91
+masukkan markah 3: 93
+purata : 91.3333

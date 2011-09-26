@@ -1,0 +1,27 @@
+#include<iostream.h>
+
+class student {
+protected:
+    int umur;
+    char jantina[20];
+    char nama[20];
+public:
+
+    void input() {
+        cout << "masukkan nama:";
+        cin.getline(nama, 20);
+        cout << "masukkan umur:";
+        cin >> umur;
+        cout << "masukkan jantina:";
+        cin.getline(jantina, 20);
+    }
+};
+
+class student_idublic student {
+private:
+    char subjek[20];
+    int mark1, mark2, mark3, average;
+public:
+
+    void kiramark() {
+        cout << " purata=(mark1+mark2+mark3)/3; } void papar() { cout<<"purata : "<<purata<<endl; } }; void main() { student atty; atty.input(); atty.kiramark(); atty.papar(); }

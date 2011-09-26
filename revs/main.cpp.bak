@@ -1,0 +1,133 @@
+#include <iostream>;
+
+using std::cout;
+using std::cin;
+using std::endl;
+
+class Input
+{
+public:
+	char character;
+        int playerNumber;
+        Input();
+	Input(char, int);
+	void win();
+};
+
+Input::Input()
+{}
+
+Input::Input(char playerCharacter, int player)
+{
+	character = playerCharacter;
+        playerNumber = player;
+	cout<<"player "<<playerNumber<<" with character "<<character<<" has been initialized"<<endl;
+}
+
+void Input::win()
+{
+	cout<<"player "<< playerNumber <<" wins!"<<endl;
+}
+
+class TicTacToe {
+public:
+	TicTacToe();
+	void displayMap();
+        bool endGame();
+	char map[9];
+        Input currentPlayer;
+};
+
+TicTacToe::TicTacToe()
+{
+    //initializeMap
+    map[0] = '0';
+    map[1] = '1';
+    map[2] = '2';
+    map[3] = '3';
+    map[4] = '4';
+    map[5] = '5';
+    map[6] = '6';
+    map[7] = '7';
+    map[8] = '8';
+}
+
+bool TicTacToe::endGame()
+{
+    if((map[0] == map[1])&&(map[1] == map[2]))
+    {
+        return true;
+    }
+    else if((map[0] == map[3])&&(map[3] == map[6]))
+    {
+        return true;
+    }
+    else if((map[0] == map[4])&&(map[4] == map[8]))
+    {
+        return true;
+    }
+    else if((map[8] == map[7])&&(map[7] == map[6]))
+    {
+        return true;
+    }
+    else if((map[8] == map[5])&&(map[5] == map[2]))
+    {
+        return true;
+    }
+    else if((map[2] == map[4]) && (map[4] == map[6]))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+}
+
+void TicTacToe::displayMap()
+{
+	cout<<map[6]<<"|"<<map[7]<<"|"<<map[8]<<endl;
+	cout<<"_"<<"|"<<"_"<<"|"<<"_"<<endl;
+	cout<<map[3]<<"|"<<map[4]<<"|"<<map[5]<<endl;
+	cout<<"_"<<"|"<<"_"<<"|"<<"_"<<endl;
+	cout<<map[0]<<"|"<<map[1]<<"|"<<map[2]<<endl;
+}
+
+int main1()
+{
+	TicTacToe ticTacToe = TicTacToe();
+	cout<<"Tic Tac Toe game"<<endl;
+
+        char icon;
+        int mapping;
+
+        cout<<"Player 1 please key in your icon ";
+        cin>>icon;
+        Input player1 = Input(icon,1);
+        cout<<"Player 2 please key in your icon ";
+        cin>>icon;
+        Input player2 = Input(icon,2);
+
+        ticTacToe.currentPlayer = player2;
+
+        cout<<"game starts"<<endl;
+        while(!ticTacToe.endGame())
+        {
+            if(ticTacToe.currentPlayer.playerNumber == 2)
+            {
+                ticTacToe.currentPlayer = player1;
+            }
+            else if(ticTacToe.currentPlayer.playerNumber == 1)
+            {
+                ticTacToe.currentPlayer = player2;
+            }
+            cout<<"player "<<ticTacToe.currentPlayer.playerNumber<<" please make your move: ";
+            cin>>mapping;
+            ticTacToe.map[mapping] = ticTacToe.currentPlayer.character;
+            ticTacToe.displayMap();
+        }
+        ticTacToe.currentPlayer.win();
+}
+
+
